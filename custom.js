@@ -67,7 +67,7 @@ const generateRow = item =>
   "</td>" +
   "<td>" +
   item.amount +
-  "</td>" +
+  " Ft </td>" +
   "<td>" +
   formatDate(item.time) +
   "</td>" +
