@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <style type="text/css" media="screen">
+    body {
+      padding-top: 10px;
+    }
+    #removeButton {
+      color: red;
+      border-color: red;
+    }
+    #removeAllButton {
+      margin-left: 10px;
+      color: red;
+      border-color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="column column-75">
+        <input type="text" id="inputTitle">
+        <input type="number" id="inputValue">
+      </div>
+      <div class="column column-25">
+        <button id="addButton">Add</button>
+      </div>
+    </div>
+    <div class="row">
+      <h3>Items</h3>
+    </div>
+    <div class="row" id="items">
+    </div>
+    <div class="row">
+        <button id="removeButton" class="button button-outline float-right">Remove</button>
+        <button id="removeAllButton" class="button button-outline float-right">Remove All</button>
+    </div>
+  </div>
+  <script src="custom.js"></script>
+</body>
+</html>
