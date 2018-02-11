@@ -1,7 +1,7 @@
 # Cest
 Cest is a time and geotagged expense tracker web application. Okay, this might need some explanation. I track my expenses in GNUCash that runs on my laptop. I need an application on my phone that I can use to track the cash expenses I make throughout the day. Sometimes I input these expenses to GNUCash after 2 weeks. My memory is not that good, I forget where I spent cash. With time and geolocation, it's way easier to figure it out. 2:00 AM at a bar. Probably beer. 6:46 AM, coffee shop. Yes, that's that 3 EUR latte.
 
-## Enough explanation, show me a screenshot!
+## Enough with the explanation, show me a screenshot!
 Here you go:
 
 ![](screenshot_resized.png)
