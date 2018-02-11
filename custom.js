@@ -1,4 +1,5 @@
 const rawItems = localStorage.getItem("items") || "[]";
+const selectedItems = [];
 var items = JSON.parse(rawItems).map(i => ({
   ...i,
   time: new Date(i.time)
@@ -49,11 +50,25 @@ const formatDate = date => {
   return monthNames[monthIndex] + " " + day + ", " + hour + ":" + minute;
 };
 
+const onRowClick = id => {
+  const index = selectedItems.indexOf(id);
+  if (index >= 0) {
+    selectedItems.splice(index, 1);
+  } else {
+    selectedItems.push(id);
+  }
+  render();
+};
+
+const generateTrClass = item => {
+  if (selectedItems.includes(item.id)) {
+    return "selected";
+  }
+  return "";
+};
+
 const generateRow = item =>
-  "<tr>" +
-  "<td>" +
-  `<input type='checkbox' class='messageCheckbox' data-id='${item.id}'/>` +
-  "</td>" +
+  `<tr onclick='onRowClick("${item.id}");' class='${generateTrClass(item)}'>` +
   "<td>" +
   item.title +
   "</td>" +
@@ -113,15 +128,7 @@ const onRemoveAll = event => {
 
 const onRemove = event => {
   const inputElements = document.getElementsByClassName("messageCheckbox");
-  const removeIDs = [];
-  for (var i = 0; inputElements[i]; ++i) {
-    const checkedValue = inputElements[i].checked;
-    const id = inputElements[i].getAttribute("data-id");
-    if (checkedValue) {
-      removeIDs.push(id);
-    }
-  }
-  items = items.filter(item => !removeIDs.includes(item.id));
+  items = items.filter(item => !selectedItems.includes(item.id));
   saveItems();
   render();
 };
