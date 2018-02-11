@@ -12,19 +12,16 @@ const getLocation = handler => {
   });
 };
 
-getLocation();
-
 const setButtonText = text =>
   (document.getElementById("addButton").innerHTML = text);
 
-const generateMapLink = loc => '<a href="' + generateMapURL(loc) + '">Map</a>';
+const generateMapLink = loc => `<a href="${generateMapURL(loc)}">Map</a>`;
 const generateLocString = loc => loc[0] + "," + loc[1];
 const generateMapURL = loc =>
-  "http://maps.google.com/maps?q=" +
-  generateLocString(loc) +
-  "&ll=" +
-  generateLocString(loc) +
-  "z=17";
+  `http://maps.google.com/maps?
+  q=${generateLocString(loc)}
+  &ll=${generateLocString(loc)}
+  &z=17`;
 
 const formatDate = date => {
   var monthNames = [
@@ -58,9 +55,7 @@ const formatDate = date => {
 const generateRow = item =>
   "<tr>" +
   "<td>" +
-  "<input type='checkbox' class='messageCheckbox' data-id='" +
-  item.id +
-  "'/>" +
+  `<input type='checkbox' class='messageCheckbox' data-id='${item.id}'/>` +
   "</td>" +
   "<td>" +
   item.title +
@@ -77,8 +72,8 @@ const generateRow = item =>
   "</tr>";
 
 const generateTableRows = items => items.map(generateRow).join("\n");
-const generateTable = items =>
-  "<table>" + generateTableRows(items) + "</table>";
+
+const generateTable = items => `<table>${generateTableRows(items)}</table>`;
 
 const sortItems = () => {
   items.sort((l, r) => l.time < r.time);
@@ -114,8 +109,6 @@ const onAdd = event => {
   });
 };
 
-console.log(items);
-
 const onRemoveAll = event => {
   items = [];
   saveItems();
@@ -147,5 +140,6 @@ document
   .getElementById("removeAllButton")
   .addEventListener("click", onRemoveAll);
 
+getLocation(() => {});
 sortItems();
 render();
