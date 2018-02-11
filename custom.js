@@ -6,11 +6,8 @@ var items = JSON.parse(rawItems).map(i => ({
 
 const setText = text => (document.getElementById("content").innerHTML = text);
 
-const getLocation = handler => {
-  navigator.geolocation.getCurrentPosition(function(position) {
-    handler(position.coords.latitude, position.coords.longitude);
-  });
-};
+const getLocation = handler =>
+  navigator.geolocation.getCurrentPosition(handler);
 
 const setButtonText = text =>
   (document.getElementById("addButton").innerHTML = text);
@@ -93,8 +90,7 @@ const onAdd = event => {
   setButtonText("Getting location...");
   const text = document.getElementById("inputTitle").value;
   const value = document.getElementById("inputValue").value;
-  getLocation((lat, long) => {
-    const time = new Date().getUTCDate();
+  getLocation(({ lat, long }) => {
     items.push({
       loc: [lat, long],
       time: new Date(),
